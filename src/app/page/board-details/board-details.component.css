@@ -1,0 +1,28 @@
+
+.board{
+
+    border: solid red 1px;
+    text-align: center;
+
+}
+
+.board_title{
+    /* border: solid lime 1px; */
+    margin-bottom:0 ;
+}
+
+.board_description{
+    /* border: solid orange 1px; */
+
+}
+
+.threads_container{
+    border: solid orange 1px;
+    text-align: left;
+
+}
+
+.form_container{
+    border: solid lime 1px;
+    text-align: center;
+}

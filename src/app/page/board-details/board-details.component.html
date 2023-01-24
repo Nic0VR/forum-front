@@ -1,0 +1,19 @@
+<div *ngIf="board" class="board">
+  <h1 class="board_title">{{ board.title }}</h1>
+  <span class="board_description">{{board.description}}</span>  
+
+  <span></span>
+
+<hr class="sep_section">
+<div class="form_container">
+    <app-post-form [boardId]="board.id" (threadEmitter)="addThread($event)"></app-post-form>
+
+</div>
+
+<hr class="sep_section">
+  <div *ngIf="threads" class="threads_container">
+    <div *ngFor="let t of threads">
+      <app-thread [thread]="t"></app-thread>
+    </div>
+  </div>
+</div>

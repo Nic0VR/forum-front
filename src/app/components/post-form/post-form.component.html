@@ -1,0 +1,21 @@
+
+
+    <form [formGroup]="postFormGroup" (ngSubmit)="submitThread()">
+        <table class="table_form">
+            <tbody>
+                <tr>
+                    <th class="form_th"><label for="title">Title</label></th>
+                    <td><input formControlName="title" size="25" maxlength="35" type="text"></td>
+                </tr>
+                <tr>
+                    <th class="form_th"><label for="text">Text</label></th>
+                    <td><textarea class="text_area" rows="8" cols="27" formControlName="text" type="text" ></textarea></td>
+     
+                </tr>
+                <tr class="input_row">
+                    <td colspan="2"><button class="submit" type="submit">Post</button></td>
+                </tr>
+            </tbody>
+          
+        </table>
+    </form>

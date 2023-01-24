@@ -1,0 +1,23 @@
+<nav class="topbar">
+  <div class="topbar_container">
+    <ul class="topbar_links">
+      <li>
+        <a routerLink="home">Home</a>
+      </li>
+      <li *ngFor="let b of boards">
+        <a [routerLink]="'/board/' + b.id">/{{ b.ref }}/</a>
+      </li>
+    </ul>
+
+    <ul class="topbar_account">
+      <ng-container *ngIf="!username">
+        <li><a routerLink="login">Login</a></li>
+        <li>Sign up</li>
+      </ng-container>
+      <ng-container *ngIf="username">
+        <li><a>Profile</a></li>
+        <li><a (click)="logout()" href="">Logout</a></li>
+      </ng-container>
+    </ul>
+  </div>
+</nav>

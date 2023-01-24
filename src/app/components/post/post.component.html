@@ -1,0 +1,24 @@
+
+
+<div *ngIf="post" class="post_container">
+    <div class="row">
+        <div class="post_info">
+            {{post.username?post.username:"anonymous"}}
+        </div>
+        <div class="post_repliedBy"></div>
+    </div>
+   
+    
+    <div class="post_content">
+        <div class="image_section">
+            <div class="file_info"></div>
+            <div class="image_container"></div>    
+        </div>
+        <div class="post_text">
+            {{post.text}}
+        </div>
+    </div>
+
+</div>
+
+

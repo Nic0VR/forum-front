@@ -1,0 +1,25 @@
+<div *ngIf="thread" class="thread_container">
+  <div class="row">
+    <div class="post_info">
+      {{ thread.username ? thread.username : "anonymous" }} No:{{ thread.id }}
+    </div>
+    <div class="post_repliedBy"></div>
+  </div>
+
+  <div class="row">
+    <div class="image_section">
+      <div class="image_container"></div>
+    </div>
+    <div class="post_text">
+      {{ thread.text }}
+    </div>
+  </div>
+
+  <div class="posts_container">
+    <ng-container *ngIf="posts">
+      <app-post *ngFor="let p of posts" [post]="p"></app-post>
+    </ng-container>
+
+    <button (click)="loadData()">Expand posts</button>
+  </div>
+</div>

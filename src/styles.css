@@ -1,1 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+    margin: 0;
+    padding: 0;
+    --color1: #2d728fff;
+    --color2: #3b8ea5ff;
+    --color3: #f5ee9eff;
+    --color4: #f49e4cff;
+    --color5: #ab3428ff;
+
+    --light-gray:#E0E0E2;
+    --middle-gray:#4C5B61;
+    --dark-gray:#2f3e46;
+    --bud-green:#5FAD56; 
+    --terminal-green:#37ff14bb;
+
+    font-family: monospace;
+    background-color: var(--middle-gray);
+
+}
+
+ul{
+ margin: 0;
+ padding: 0;
+ list-style-type:none;
+}
+
+.row{
+    display: flex;
+    flex-direction:row;
+}
+
+.col{
+    display: flex;
+    flex-direction: column;
+}

@@ -1,0 +1,26 @@
+
+.login{
+    border: solid red 1px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    text-align: center;
+}
+.login form{
+    border: solid lime 1px;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.submit{
+    background-color: var(--dark-gray);
+    border-radius: 0;
+    color: var(--light-gray);
+    border:solid black 1px;
+    text-shadow: -1px -1px 0px black; 
+}
+
+.submit:hover{
+    color: var(--terminal-green);
+    background-color: var(--middle-gray);
+}
