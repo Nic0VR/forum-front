@@ -8,9 +8,13 @@
 }
 
 .thread_content{
-    
+
 }
 
+.image_section{
+    display: flex;
+    flex-direction: row;
+}
 
 
 .id{

@@ -1,17 +1,24 @@
 <div *ngIf="thread" class="thread_container">
   <div class="row">
-    <div class="post_info">
-      {{ thread.username ? thread.username : "anonymous" }} No:{{ thread.id }}
-    </div>
-    <div class="post_repliedBy"></div>
-  </div>
-
-  <div class="row">
     <div class="image_section">
-      <div class="image_container"></div>
+      <div class="col">
+        <div class="file_info">file 1</div>
+        <div class="image_container"></div>
+      </div>  
+      <div class="col">
+        <div class="file_info">file 2</div>
+        <div class="image_container"></div>
+      </div>  
     </div>
-    <div class="post_text">
-      {{ thread.text }}
+
+    <div>
+      <div class="post_info">
+        {{ thread.username ? thread.username : "anonymous" }} No:{{ thread.id }}
+      </div>
+      <div class="post_repliedBy"></div>
+      <div class="post_text">
+        {{ thread.text }}
+      </div>
     </div>
   </div>
 

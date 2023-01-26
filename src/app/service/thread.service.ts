@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -38,5 +38,19 @@ export class ThreadService {
       catchError((e =>{
       throw e;
     })))
+  }
+
+  saveWithImage(formdata:FormData):Observable<Thread>{
+    let config = {
+      headers: {
+          'Accept': 'application/json',
+          'Content-Type': undefined
+      }
+  }; 
+    return this.http.post<Thread>(this.url+"/files",formdata,{}).pipe(
+      catchError((e =>{
+        throw e;
+      }))
+    )
   }
 }

@@ -15,6 +15,7 @@ import { BoardDetailsComponent } from './page/board-details/board-details.compon
 import { ThreadComponent } from './components/thread/thread.component';
 import { PostFormComponent } from './components/post-form/post-form.component';
 import { PostComponent } from './components/post/post.component';
+import { ThreadFormComponent } from './components/thread-form/thread-form.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { PostComponent } from './components/post/post.component';
     ThreadComponent,
     PostFormComponent,
     PostComponent,
+    ThreadFormComponent,
 
   ],
   imports: [

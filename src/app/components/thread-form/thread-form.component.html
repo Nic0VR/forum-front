@@ -1,0 +1,28 @@
+<form [formGroup]="threadFormGroup" (ngSubmit)="submitThread()">
+    <table class="table_form">
+        <tbody>
+            <tr>
+                <th class="form_th"><label for="title">Title</label></th>
+                <td><input formControlName="title" size="25" maxlength="35" type="text"></td>
+            </tr>
+            <tr>
+                <th class="form_th"><label for="text">Text</label></th>
+                <td><textarea class="text_area" rows="8" cols="27" formControlName="text" type="text" ></textarea></td>
+ 
+            </tr>
+            <tr>
+                <th class="form_th"><label for="files">Files</label></th>
+                <div class="col">
+                    <td><input type="file" (change)="handleFileInput($event,0)"></td>
+                    <td><input type="file" (change)="handleFileInput($event,1)"></td>
+                    <td><input type="file" (change)="handleFileInput($event,2)"></td>
+                </div>
+
+            </tr>
+            <tr class="input_row">
+                <td colspan="2"><button class="submit" type="submit">Post new thread</button></td>
+            </tr>
+        </tbody>
+      
+    </table>
+</form>
