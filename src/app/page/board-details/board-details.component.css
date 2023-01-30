@@ -26,3 +26,7 @@
     border: solid lime 1px;
     text-align: center;
 }
+
+.sep_section{
+    border: double 5px;
+}

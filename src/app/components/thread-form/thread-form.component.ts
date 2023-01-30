@@ -23,7 +23,7 @@ export class ThreadFormComponent implements OnInit {
   @Output()
   threadEmitter: EventEmitter<Thread> = new EventEmitter<Thread>();
   files: File[] = [];
-
+  
   threadFormGroup: FormGroup = new FormGroup({
     title: new FormControl('', Validators.required),
     text: new FormControl('', Validators.required),

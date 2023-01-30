@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { CountDto } from '../models/count-dto';
 import { Post } from '../models/post';
 
 @Injectable({
@@ -23,6 +24,15 @@ export class PostService {
     }
 
     return this.http.get<Post[]>(this.url + '/page',{params}).pipe(
+      catchError((e) => {
+        throw e;
+      })
+    );
+  }
+
+
+  countByThreadId(threadId:number){
+    return this.http.get<CountDto>(this.url+"/"+threadId+"/count").pipe(
       catchError((e) => {
         throw e;
       })

@@ -1,24 +1,25 @@
-
-
 <div *ngIf="post" class="post_container">
-    <div class="row">
-        <div class="post_info">
-            {{post.username?post.username:"anonymous"}}
+    <div class="post-sub-container">
+        <div class="files" *ngIf="files">
+            <div class="row">
+                <div class="file" *ngFor="let img of files">
+                    <div class="file-info">file 1aaaaaaaaaaaaaaqqqqqqqqqqq</div>
+                    <a><img [src]="img" class="post-image"></a>
+                </div>
+            </div>
         </div>
-        <div class="post_repliedBy"></div>
-    </div>
-   
-    
-    <div class="post_content">
-        <div class="image_section">
-            <div class="file_info"></div>
-            <div class="image_container"></div>    
+
+        <div class="intro">
+            <span class="username">{{ post.username ? post.username : "anonymous" }}</span>
+            <span class="date">{{
+                post.creationDate | date : "YYYY-MM-dd hh:mm:ss.SSS "
+                }}</span>
+            <span><a>No:{{ post.id }}</a></span>
         </div>
-        <div class="post_text">
+
+        <div class="post-body">
             {{post.text}}
         </div>
     </div>
 
 </div>
-
-

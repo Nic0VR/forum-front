@@ -5,6 +5,7 @@
     color:var(--light-gray);
     top:0;
     position:sticky;
+    background-color: var(--light-gray);
 }
 
 .topbar_container{

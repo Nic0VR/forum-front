@@ -1,32 +1,47 @@
-<div *ngIf="thread" class="thread_container">
-  <div class="row">
-    <div class="image_section">
-      <div class="col">
-        <div class="file_info">file 1</div>
-        <div class="image_container"></div>
-      </div>  
-      <div class="col">
-        <div class="file_info">file 2</div>
-        <div class="image_container"></div>
-      </div>  
+<div *ngIf="thread" class="thread-container">
+  <div class="thread-sub-container">
+    <a class="hide-thread-link" [routerLink]="">[-]</a>
+
+    <div class="files" *ngIf="files">
+      <div class="row">
+        <div class="file" *ngFor="let img of files">
+          <div class="file-info">
+            file 1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+          </div>
+          <a><img [src]="img" class="post-image" /></a>
+        </div>
+      </div>
     </div>
 
-    <div>
-      <div class="post_info">
-        {{ thread.username ? thread.username : "anonymous" }} No:{{ thread.id }}
-      </div>
-      <div class="post_repliedBy"></div>
-      <div class="post_text">
+    <div class="intro">
+      <span class="thread-title">{{ thread.title | titlecase}}</span>
+      <span class="username">{{ thread.username ? thread.username : "anonymous" }}</span>
+      <span class="thread-date">{{
+        thread.creationDate | date : "YYYY-MM-dd hh:mm:ss.SSS "
+        }}</span>
+      <span><a>No:{{ thread.id }}</a></span>
+      <span><a>[Watch thread]</a></span>
+      <span><a>[Reply]</a></span>
+    </div>
+
+    <div class="post-body">
+      <span class="post-text">
         {{ thread.text }}
-      </div>
+      </span>
+   
     </div>
-  </div>
-
-  <div class="posts_container">
-    <ng-container *ngIf="posts">
-      <app-post *ngFor="let p of posts" [post]="p"></app-post>
+    <br>
+    <span class="omitted">
+      <span><a *ngIf="posts.length" class="expand-link" [routerLink]="" (click)="hidePosts()">hide expanded posts</a></span>
+      <span *ngIf="countPosts && posts.length < countPosts">{{ countPosts - posts.length }} posts hidden,
+        <a class="expand-link" (click)="loadMorePosts()" [routerLink]="" queryParamsHandling="preserve">click to expand</a></span>
+    </span>
+    <br>
+    <!-- </div> -->
+    <ng-container *ngFor="let p of posts">
+      <app-post [post]="p" ></app-post>
+      <br class="post-sep">
     </ng-container>
-
-    <button (click)="loadData()">Expand posts</button>
   </div>
+
 </div>

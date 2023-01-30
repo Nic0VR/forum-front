@@ -1,4 +1,7 @@
+import { FileInfo } from "./file-info";
+
 export interface Post {
+
 
     id:number;
 
@@ -8,5 +11,6 @@ export interface Post {
     repliedBy:number[];
 
     username?:string;
-    
+    files?:FileInfo[];
+    creationDate?: string;
 }

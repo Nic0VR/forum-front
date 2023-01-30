@@ -1,39 +1,106 @@
 
-.thread_container{
-    border: solid orange 1px;
-    display: flex;
-    flex-direction: column;
-    width: 80%;
-    margin: 0 auto;
+.thread-container {
+  margin: 20px 0;
+  display: inline-flex;
+  flex-direction: column;
+  width: 100%;
 }
 
-.thread_content{
+.thread-sub-container {
+  border: double black 4px;
 
-}
-
-.image_section{
-    display: flex;
-    flex-direction: row;
+  width: 95%;
+  margin: 0 auto;
 }
 
 
-.id{
- margin: 0 5px;
- border-right: solid 1px black;
+.files {
+  display: block;
+  width: fit-content;
+  float: left;
+  /* border: solid lime 1px; */
+  height: fit-content;
+  margin-bottom: 10px;
 }
 
-
-.posts_container{
-    border: solid red 1px;
-   
+.file {
+  max-width: 200px;
+  min-width: 100px;
+  height: auto;
+  margin: 0 10px;
 }
 
+.file-info {
+  overflow-wrap: break-word;
+  word-break: break-all;
+}
 
+.post-image {
+  max-width: 100%;
+  max-height: 100%;
+  border: darkslategrey double 2px;
+  display: block;
+}
 
-.image_container{
-    min-width: 100px;
-    min-height: 100px;
-    max-width: 200px;
-    max-height: 100px;
-    border: solid lime 1px;
+.hide-thread-link {
+  float: left;
+}
+
+.post-body {
+  overflow-wrap: break-word;
+  word-wrap: break-all;
+  /* border: solid fuchsia 1px; */
+  margin-top: 5px;
+}
+
+.post-text {
+  overflow-wrap: break-word;
+  word-wrap: break-all;
+  width: fit-content;
+}
+
+.intro {
+  min-width: fit-content;
+  /* border: solid yellow 1px; */
+}
+
+.post-sep {
+  height: 0;
+  display: block;
+}
+
+.intro a {
+  cursor: pointer;
+}
+.intro a:hover {
+  color: antiquewhite;
+}
+
+.thread-title {
+  color: crimson;
+  font-size: larger;
+  font-family: sans-serif;
+  font-family: monospace;
+  font-weight: 800;
+  margin: 0 4px;
+  /* border: solid orange 1px; */
+  line-height: 2em;
+}
+
+.username {
+  color: #32dd72;
+  /* font-family: sans-serif; */
+  font-family: monospace;
+  font-weight: 800;
+  margin: 0 4px;
+}
+
+.thread-date{
+  font-family: monospace;
+  color:#999999;
+}
+
+.expand-link:hover{
+  cursor: pointer;
+  color: antiquewhite;
 }
