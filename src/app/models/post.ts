@@ -4,11 +4,11 @@ export interface Post {
 
 
     id:number;
-
+    threadId:number;
     text:string;
 
-    replyTo:number[];
-    repliedBy:number[];
+    replyTo?:number[];
+    repliedBy?:number[];
 
     username?:string;
     files?:FileInfo[];

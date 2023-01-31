@@ -1,0 +1,8 @@
+<ng-container *ngIf="thread">
+
+    <app-post-form (postEmitter)="handlePostAdded($event)" [threadId]="thread.id!"></app-post-form>
+    <app-thread [addPostEvent]="addPostEventSubject" [thread]="thread"></app-thread>
+    
+</ng-container>
+
+<div *ngIf="!thread">No Data</div>

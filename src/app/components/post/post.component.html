@@ -14,7 +14,13 @@
             <span class="date">{{
                 post.creationDate | date : "YYYY-MM-dd hh:mm:ss.SSS "
                 }}</span>
-            <span><a>No:{{ post.id }}</a></span>
+                <ng-container *ngIf="inBoard">
+                    <span><a [routerLink]="'/thread/'+post.threadId" >No:{{ post.id }}</a></span>
+                </ng-container>
+                <ng-container *ngIf="!inBoard">
+                   
+                    <span><a  (click)="replyTo(post.id)">No:{{ post.id }}_</a></span>
+                </ng-container>
         </div>
 
         <div class="post-body">

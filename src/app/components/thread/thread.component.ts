@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
 import { FileInfo } from 'src/app/models/file-info';
 import { Post } from 'src/app/models/post';
 import { Thread } from 'src/app/models/thread';
@@ -23,10 +24,23 @@ export class ThreadComponent implements OnInit {
       this.loadFiles(this.thread?.files!);
     }
     this.countPostsInThread(this.thread.id!);
+
+    this.postEventSubscription = this.addPostEvent?.subscribe({
+      next: (v) => {this.handleAddPost(v)},
+      error: (e) => {},
+    });
   }
 
   @Input()
   thread!: Thread;
+
+  @Input()
+  inBoard?: boolean;
+
+  @Input()
+  addPostEvent?: Observable<Post>;
+  
+  private postEventSubscription?: Subscription;
   posts: Post[] = [];
   hiddenPosts: Post[] = [];
   files: ArrayBuffer[] = [];
@@ -37,22 +51,23 @@ export class ThreadComponent implements OnInit {
   countPosts?: number;
 
   loadMorePosts() {
-    if(this.hiddenPosts.length ){
-      this.posts=this.posts.concat(this.hiddenPosts.splice(0,Math.min(this.max,this.hiddenPosts.length)));
-    }else{
+    if (this.hiddenPosts.length) {
+      this.posts = this.posts.concat(
+        this.hiddenPosts.splice(0, Math.min(this.max, this.hiddenPosts.length))
+      );
+    } else {
       this.postService
-      .findPageByThreadId(this.thread!.id!, this.currentPage, this.max)
-      .subscribe({
-        next: (v) => {
-          this.posts = this.posts.concat(v);
-        },
-        error: (e) => {},
-        complete: () => {
-          this.currentPage++;
-        },
-      });
+        .findPageByThreadId(this.thread!.id!, this.currentPage, this.max)
+        .subscribe({
+          next: (v) => {
+            this.posts = this.posts.concat(v);
+          },
+          error: (e) => {},
+          complete: () => {
+            this.currentPage++;
+          },
+        });
     }
-    
   }
 
   loadFiles(files: FileInfo[]) {
@@ -103,7 +118,22 @@ export class ThreadComponent implements OnInit {
     this.hiddenPosts = this.posts;
     this.posts = [];
     // calcul page en fonction du max et du nombre d'items dans hiddenposts
-    this.currentPage = Math.round((this.hiddenPosts.length/this.max)) +1 ;
+    this.currentPage = Math.round(this.hiddenPosts.length / this.max) + 1;
+  }
 
+  /**
+   * Handle post submit via form and add it to displayed posts ?
+   * @param post 
+   */
+  handleAddPost(post:Post){
+    this.countPosts!++;
+    
+    
+    this.loadMorePosts()
+  }
+
+
+  ngOnDestroy() {
+    this.postEventSubscription?.unsubscribe();
   }
 }

@@ -13,7 +13,7 @@
   <hr class="sep_section">
   <div *ngIf="threads" class="threads_container">
     <div *ngFor="let t of threads">
-      <app-thread [thread]="t"></app-thread>
+      <app-thread [inBoard]="true" [thread]="t"></app-thread>
       <hr class="sep_section">
     </div>
   </div>

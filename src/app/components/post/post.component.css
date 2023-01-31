@@ -18,6 +18,7 @@
 
 .file {
   max-width: 200px;
+  width: fit-content;
   min-width: 100px;
   height: auto;
   margin: 0 10px;
@@ -31,6 +32,7 @@
 .post-image {
   max-width: 100%;
   max-height: 100%;
+  min-width: 100px;
   border: darkslategrey double 2px;
   display: block;
 }
@@ -69,4 +71,8 @@
 }
 .intro a:hover {
   color: antiquewhite;
+}
+
+.post-body{
+  white-space: pre-line;
 }
