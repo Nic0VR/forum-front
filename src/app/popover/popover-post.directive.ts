@@ -12,7 +12,7 @@ import {
   ViewContainerRef,
 } from '@angular/core';
 import { Subject } from 'rxjs';
-import { PostPopoverComponent } from '../components/post-popover/post-popover.component';
+import { PostPopoverComponent } from './post-popover/post-popover.component';
 import { PostComponent } from '../components/post/post.component';
 import { Post } from '../models/post';
 
