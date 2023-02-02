@@ -14,13 +14,19 @@
             <span class="date">{{
                 post.creationDate | date : "YYYY-MM-dd hh:mm:ss.SSS "
                 }}</span>
-                <ng-container *ngIf="inBoard">
-                    <span><a [routerLink]="'/thread/'+post.threadId" >No:{{ post.id }}</a></span>
-                </ng-container>
-                <ng-container *ngIf="!inBoard">
-                   
-                    <span><a  (click)="replyTo(post.id)">No:{{ post.id }}_</a></span>
-                </ng-container>
+            <ng-container *ngIf="inBoard">
+                <span><a [routerLink]="'/thread/'+post.threadId" [queryParams]="{resp:post.id}">No:{{ post.id
+                        }}</a></span>
+            </ng-container>
+            <ng-container *ngIf="!inBoard">
+
+                <span><a (click)="replyTo(post.id)">No:{{ post.id }}</a></span>
+            </ng-container>
+
+            <span  (mouseenter)="changeReplyPreview(id,$event)" class="replies" *ngFor="let id of post.repliedBy">
+                <a  [post]="replyPreview"  class="reply"> >>{{id}} </a>
+            </span>
+
         </div>
 
         <div class="post-body">

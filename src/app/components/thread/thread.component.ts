@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { FileInfo } from 'src/app/models/file-info';
 import { Post } from 'src/app/models/post';
@@ -6,6 +7,7 @@ import { Thread } from 'src/app/models/thread';
 import { FileService } from 'src/app/service/file.service';
 import { PostService } from 'src/app/service/post.service';
 import { ThreadService } from 'src/app/service/thread.service';
+import { PostComponent } from '../post/post.component';
 
 @Component({
   selector: 'app-thread',
@@ -16,7 +18,8 @@ export class ThreadComponent implements OnInit {
   constructor(
     private threadService: ThreadService,
     private postService: PostService,
-    private fileService: FileService
+    private fileService: FileService,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -26,7 +29,9 @@ export class ThreadComponent implements OnInit {
     this.countPostsInThread(this.thread.id!);
 
     this.postEventSubscription = this.addPostEvent?.subscribe({
-      next: (v) => {this.handleAddPost(v)},
+      next: (v) => {
+        this.handleAddPost(v);
+      },
       error: (e) => {},
     });
   }
@@ -39,7 +44,7 @@ export class ThreadComponent implements OnInit {
 
   @Input()
   addPostEvent?: Observable<Post>;
-  
+
   private postEventSubscription?: Subscription;
   posts: Post[] = [];
   hiddenPosts: Post[] = [];
@@ -49,7 +54,7 @@ export class ThreadComponent implements OnInit {
   index: number = 0;
   isPostsVisible: boolean = true;
   countPosts?: number;
-
+  replyPreview?:Post;
   loadMorePosts() {
     if (this.hiddenPosts.length) {
       this.posts = this.posts.concat(
@@ -108,8 +113,9 @@ export class ThreadComponent implements OnInit {
       next: (v) => {
         this.countPosts = v.count;
       },
-      error: (e) => {
-        console.log(e);
+      error: (e) => {},
+      complete: () => {
+        this.loadPostsOnStartup();
       },
     });
   }
@@ -121,17 +127,25 @@ export class ThreadComponent implements OnInit {
     this.currentPage = Math.round(this.hiddenPosts.length / this.max) + 1;
   }
 
-  /**
-   * Handle post submit via form and add it to displayed posts ?
-   * @param post 
-   */
-  handleAddPost(post:Post){
+  handleAddPost(post: Post) {
     this.countPosts!++;
-    
-    
-    this.loadMorePosts()
+    this.loadMorePosts();
   }
 
+  loadPostsOnStartup() {
+    this.route.queryParams.subscribe((params) => {
+      if (params['show']) {
+        this.loadMorePosts();
+      }
+    });
+  }
+
+  //TODO:fix
+  handleShowReply(obj:{number:number,mouseEvent:MouseEvent} ){
+    let PostToShow:Post|undefined = this.posts.filter(post => post.id==obj.number).pop();
+   
+   this.replyPreview= PostToShow;
+  }
 
   ngOnDestroy() {
     this.postEventSubscription?.unsubscribe();

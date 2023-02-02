@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Post } from 'src/app/models/post';
 import { Thread } from 'src/app/models/thread';
@@ -14,9 +15,9 @@ import { ThreadService } from 'src/app/service/thread.service';
 })
 export class PostFormComponent implements OnInit {
   constructor(
-    private threadService: ThreadService,
     private postService: PostService,
-    private postFormService:PostFormService
+    private postFormService:PostFormService,
+    private route:ActivatedRoute,
   ) {  }
 
   @Input()
@@ -34,9 +35,16 @@ export class PostFormComponent implements OnInit {
     text: new FormControl('', Validators.required),
   });
 
-  
 
   ngOnInit(): void {
+
+    this.route.queryParams.subscribe(params => {
+      if(params['resp']){
+        this.handlePostReply(  params['resp']);
+      }
+ 
+    })
+    
     this.subscription = this.postFormService.lastPost$.subscribe({
       next:(v)=>{
         this.handlePostReply(v);
@@ -47,13 +55,26 @@ export class PostFormComponent implements OnInit {
   }
 
   submitPost() {
-    //TODO: replyTo logic : parse text to extract post replyTo posts ids
-    // let text = this.postFormGroup.get('text')?.value;
+
+
+    let regex = RegExp(/(>>[0-9]+)/gm)
+    let matches = this.text.match(regex);
+    let replyTo:number[]=[];
+
+    if(matches){
+      for(let match of matches){
+
+        let id = match.substring(2);
+        replyTo.push(Number.parseInt(id));
+        
+      }
+    }
+    
     let text = this.text;
     let post: Post = {
       text: text,
       id: 0,
-      replyTo: [],
+      replyTo: replyTo,
       repliedBy: [],
       threadId: this.threadId
     };

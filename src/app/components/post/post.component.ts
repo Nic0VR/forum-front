@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { FileInfo } from 'src/app/models/file-info';
 import { Post } from 'src/app/models/post';
@@ -29,7 +29,12 @@ export class PostComponent implements OnInit {
    
   }
   @Input() post!: Post;
+
   @Input() inBoard?:boolean;
+  @Output() showReplyEmitter:EventEmitter<{number:number,mouseEvent:MouseEvent}> = new EventEmitter<{number:number,mouseEvent:MouseEvent}>();
+  @Input()
+  replyPreview?:Post;
+
   files: ArrayBuffer[] = [];
   index: number = 0;
   subscription!:Subscription;
@@ -72,4 +77,14 @@ export class PostComponent implements OnInit {
   ngOnDestroy(){
     this.subscription?.unsubscribe();
   }
+
+
+  changeReplyPreview(id:number,e:MouseEvent){
+    console.log("show reply "+id);
+    this.showReplyEmitter.emit({number:id,mouseEvent:e});
+  }
+  hideReply(){
+
+  }
+
 }

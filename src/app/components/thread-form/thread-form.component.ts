@@ -36,7 +36,7 @@ export class ThreadFormComponent implements OnInit {
       let title = this.threadFormGroup.get('title')?.value;
       let text = this.threadFormGroup.get('text')?.value;
       let thread: Thread = { title: title, text: text, boardId: this.boardId };
-    
+
 
       let formdata: FormData = new FormData();
       

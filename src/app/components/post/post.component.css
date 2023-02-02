@@ -76,3 +76,8 @@
 .post-body{
   white-space: pre-line;
 }
+
+.reply{
+  border: solid orange 1px;
+  
+}

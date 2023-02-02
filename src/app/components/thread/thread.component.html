@@ -22,11 +22,11 @@
       <span><a>No:{{ thread.id }}</a></span>
       <!-- <span><a>[Watch thread]</a></span> -->
       <ng-container *ngIf="inBoard">
-        <span><a [routerLink]="'/thread/'+thread.id" >[Reply]</a></span>
+        <span><a [routerLink]="'/thread/'+thread.id" [queryParams]="{show:true}" >[Reply]</a></span>
       </ng-container>
-      <ng-container *ngIf="!inBoard">
+      <!-- <ng-container *ngIf="!inBoard">
         <span><a >[Reply2]</a></span>
-      </ng-container>
+      </ng-container> -->
     </div>
 
     <div class="post-body">
@@ -43,8 +43,10 @@
     </span>
     <br>
     <!-- </div> -->
+   
     <ng-container *ngFor="let p of posts">
-      <app-post [inBoard]="inBoard" [post]="p" ></app-post>
+      
+      <app-post [id]="'post'+p.id" (showReplyEmitter)="handleShowReply($event)" [replyPreview]="replyPreview" [inBoard]="inBoard" [post]="p" ></app-post>
       <br class="post-sep">
     </ng-container>
   </div>

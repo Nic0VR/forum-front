@@ -17,6 +17,7 @@ import { PostFormComponent } from './components/post-form/post-form.component';
 import { PostComponent } from './components/post/post.component';
 import { ThreadFormComponent } from './components/thread-form/thread-form.component';
 import { ThreadDetailsComponent } from './page/thread-details/thread-details.component';
+import { PopoverModule } from './popover/popover.module';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { ThreadDetailsComponent } from './page/thread-details/thread-details.com
     ThreadFormComponent,
     ThreadDetailsComponent,
 
+
   ],
   imports: [
     BrowserModule,
@@ -41,7 +43,7 @@ import { ThreadDetailsComponent } from './page/thread-details/thread-details.com
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-
+    PopoverModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
