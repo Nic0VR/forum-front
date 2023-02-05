@@ -44,4 +44,8 @@ export class TopBarComponent implements OnInit{
   logout(){
     this.loginService.logout();
   }
+
+  displayOptions(){
+    
+  }
 }

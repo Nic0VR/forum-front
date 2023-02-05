@@ -1,4 +1,4 @@
-<div *ngIf="post" class="post_container">
+<div *ngIf="post" class="post_container" [id]="'post'+post.id">
     <div class="post-sub-container">
         <div class="files" *ngIf="files">
             <div class="row">
@@ -24,7 +24,7 @@
             </ng-container>
 
             <span  (mouseenter)="changeReplyPreview(id,$event)" class="replies" *ngFor="let id of post.repliedBy">
-                <a  [post]="replyPreview"  class="reply"> >>{{id}} </a>
+                <a  [routerLink]="'.'" [fragment]="'post'+id" [post]="replyPreview"  class="reply"> >>{{id}} </a>
             </span>
 
         </div>

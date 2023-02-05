@@ -6,6 +6,7 @@
 
   <hr class="sep_section">
   <div class="form_container">
+
     <app-thread-form [boardId]="board.id" (threadEmitter)="addThread($event)"></app-thread-form>
 
   </div>
@@ -17,4 +18,6 @@
       <hr class="sep_section">
     </div>
   </div>
+
 </div>
+<app-bottom-bar-page  (changePageEventEmitter)="changePage($event)" *ngIf="countThread" [max]="max" [currentPage]="page" [countItem]="countThread"></app-bottom-bar-page>

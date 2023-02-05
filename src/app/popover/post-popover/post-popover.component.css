@@ -2,7 +2,7 @@
 .popover{   
     position: fixed;
     transform:translateX(-50%);
- 
+  background-color: #4c5b61;
 }
 
 .post_container {

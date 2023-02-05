@@ -1,0 +1,25 @@
+<div class="option-display">
+   <div>
+      <span class="option-title">Options</span>
+      <button class="exit-btn button" (click)="close()">X</button>
+   </div>
+   <table class="table">
+      <tr>
+         <th><label for="maxThread">Threads per page</label></th>
+         <td><input  name="maxThread" type="text" pattern="^\d*[1-9]\d*$" [required]="true" [(ngModel)]="maxThread" #maxThr="ngModel">
+            <!-- <button class="button edit-btn" (click)="toggleThreadField()"> {{threadFieldEditable?"Apply":"Edit"}}</button> -->
+            <span class="error" *ngIf="maxThr.invalid && (maxThr.dirty||maxThr.touched)">Digits only</span>
+         </td>
+      </tr>
+      <tr>
+         <th><label for="maxPost">Number of posts to fetch at once</label></th>
+         <td><input  name="maxPost" type="text" pattern="^\d*[1-9]\d*$" [required]="true"  [(ngModel)]="maxPost" #maxPo="ngModel">
+            <!-- <button class="button edit-btn" (click)="togglePostField()">{{postFieldEditable?"Apply":"Edit"}}</button> -->
+            <span class="error" *ngIf="maxPo.invalid && (maxPo.dirty||maxPo.touched)">Digits only</span>
+         </td>
+      </tr>
+   </table>
+   {{maxPost}} || {{maxThread}} !
+   <button (click)="saveUserPref()" [disabled]="!(maxPo.valid && maxThr.valid)" class="button">Save</button>
+   <button (click)="resetPref()" class="button">Reset to Default</button>
+</div>

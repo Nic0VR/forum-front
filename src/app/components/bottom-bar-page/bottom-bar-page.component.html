@@ -1,0 +1,16 @@
+<div class="bottom-bar">
+    <button [disabled]="currentPage<=1"  (click)="prev()">Previous</button>
+    <p>
+        [<span *ngFor="let index of pageNumber | range:1">
+            <a (click)="goto(index)"  class="link" [ngStyle]="{'font-weight': index==currentPage?'bolder':'normal'}">{{index}}</a><ng-container
+                *ngIf="index<pageNumber">/</ng-container></span>]
+    </p>
+
+    <button [disabled]="currentPage>=pageNumber"  (click)="next()">Next</button>
+    <p>
+        <!-- <span>currentPage:{{currentPage}}||countItem:{{countItem}}||max:{{max}}||pageNumber:{{pageNumber}}</span> -->
+        <span><a class="link" routerLink="/home">[Home]</a></span>
+        <span><a  class="link">[Catalog]</a></span>
+    </p>
+
+</div>

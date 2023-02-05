@@ -18,7 +18,10 @@ import { PostComponent } from './components/post/post.component';
 import { ThreadFormComponent } from './components/thread-form/thread-form.component';
 import { ThreadDetailsComponent } from './page/thread-details/thread-details.component';
 import { PopoverModule } from './popover/popover.module';
-
+import { BottomBarPageComponent } from './components/bottom-bar-page/bottom-bar-page.component';
+import { RangePipe } from './pipes/range.pipe';
+import { OptionDisplayModule } from './optionsDisplay/option-display.module';
+import { NumberValidatorDirective } from './directives/number-validator.directive';
 
 @NgModule({
   declarations: [
@@ -34,6 +37,10 @@ import { PopoverModule } from './popover/popover.module';
     PostComponent,
     ThreadFormComponent,
     ThreadDetailsComponent,
+    BottomBarPageComponent,
+    RangePipe,
+    NumberValidatorDirective,
+
 
 
   ],
@@ -43,7 +50,8 @@ import { PopoverModule } from './popover/popover.module';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    PopoverModule
+    PopoverModule,
+    OptionDisplayModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

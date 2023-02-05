@@ -1,0 +1,55 @@
+.option-display{
+    position: fixed;
+    width: 60%;
+    height: 60%;
+    left: 20%;
+    top: 20%;
+    z-index: 3;
+    border: solid red 1px;
+    display: inline-flex;
+    flex-direction: column;
+    background-color:#4c5b61 ;
+}
+
+.option-display > div{
+    margin: 0 auto;
+    border: solid fuchsia 1px;
+    width: 100%;
+    text-align: center;
+}
+
+.exit-btn{
+    float: right;
+    position: static;
+}
+
+.option-title{
+    border: solid lime 1px;
+    font-size: larger;
+    font-weight: bolder;
+   
+}
+
+.table{
+    border: yellow solid 1px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.edit-btn{
+    margin-left: 3px;
+}
+
+.ng-invalid{
+    border: solid red 1px;
+}
+
+.error{
+    color: firebrick;
+    font-weight: bolder;
+    margin-left: 3px;
+}
+
+.button:disabled{
+    cursor: default;
+}

@@ -34,3 +34,13 @@ ul{
     display: flex;
     flex-direction: column;
 }
+
+.button{
+    background-color: var(--dark-gray);
+    border-radius: 0;
+    color: var(--light-gray);
+    border:solid black 1px;
+    text-shadow: -1px -1px 0px black; 
+    height: min-content;
+    cursor: pointer;
+}

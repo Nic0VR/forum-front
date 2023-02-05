@@ -16,6 +16,8 @@
       </ng-container>
       <ng-container *ngIf="username">
         <li><a>Profile</a></li>
+        <li><a [routerLink]=""  [appOptionDisplay]="''">[options]</a></li>
+
         <li><a (click)="logout()" href="">Logout</a></li>
       </ng-container>
     </ul>

@@ -104,9 +104,7 @@ export class ThreadComponent implements OnInit {
     }
   }
 
-  switchVisiblePosts() {
-    this.isPostsVisible = !this.isPostsVisible;
-  }
+
 
   countPostsInThread(threadId: number) {
     this.postService.countByThreadId(threadId).subscribe({
@@ -129,7 +127,8 @@ export class ThreadComponent implements OnInit {
 
   handleAddPost(post: Post) {
     this.countPosts!++;
-    this.loadMorePosts();
+    this.posts=[];
+
   }
 
   loadPostsOnStartup() {
