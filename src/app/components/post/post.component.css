@@ -1,7 +1,6 @@
 .post_container {
   display: flow-root;
   border: double black 4px;
-
 }
 .post-sub-container {
   width: 95%;
@@ -12,32 +11,42 @@
   display: block;
   width: fit-content;
   float: left;
+  /* border: solid lime 1px; */
   height: fit-content;
   margin-bottom: 10px;
+  max-width: 100%;
 }
 
 .file {
-  max-width: 200px;
-  width: fit-content;
   min-width: 100px;
   height: auto;
-  margin: 0 10px;
+  margin: 0 5px;
+
+  width: min-content;
 }
 
 .file-info {
   overflow-wrap: break-word;
   word-break: break-all;
+  width: auto;
 }
-
-.post-image {
-  max-width: 100%;
-  max-height: 100%;
+.img {
   min-width: 100px;
+  height: auto;
+  max-width: 90vw;
   border: darkslategrey double 2px;
-  display: block;
 }
-
-.intro{
+.wrap {
+  flex-wrap: wrap;
+}
+.post-image {
+  max-height: 100%;
+  display: block;
+  width: fit-content;
+  height: fit-content;
+  padding: 0 0;
+}
+.intro {
   min-width: fit-content;
   /* border: solid yellow 1px; */
 }
@@ -50,9 +59,9 @@
   margin: 0 4px;
 }
 
-.date{
+.date {
   font-family: monospace;
-  color:#999999;
+  color: #999999;
 }
 
 .thread-title {
@@ -73,11 +82,10 @@
   color: antiquewhite;
 }
 
-.post-body{
+.post-body {
   white-space: pre-line;
 }
 
-.reply{
+.reply {
   border: solid orange 1px;
-  
 }

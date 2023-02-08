@@ -3,12 +3,12 @@
     <a class="hide-thread-link" [routerLink]="">[-]</a>
 
     <div class="files" *ngIf="files">
-      <div class="row">
+      <div class="row wrap">
         <div class="file" *ngFor="let img of files">
           <div class="file-info">
             file 1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
           </div>
-          <a><img [src]="img" class="post-image" /></a>
+          <a class="post-image" (click)="toggleImageSize(img)"><img class="img" [src]="img" /></a>
         </div>
       </div>
     </div>

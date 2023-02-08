@@ -1,10 +1,10 @@
 <div *ngIf="post" class="post_container" [id]="'post'+post.id">
     <div class="post-sub-container">
         <div class="files" *ngIf="files">
-            <div class="row">
+            <div class="row wrap">
                 <div class="file" *ngFor="let img of files">
                     <div class="file-info">file 1aaaaaaaaaaaaaaqqqqqqqqqqq</div>
-                    <a><img [src]="img" class="post-image"></a>
+                    <a class="post-image" (click)="toggleImageSize(img)"><img class="img" [src]="img"></a>
                 </div>
             </div>
         </div>
@@ -23,8 +23,8 @@
                 <span><a (click)="replyTo(post.id)">No:{{ post.id }}</a></span>
             </ng-container>
 
-            <span  (mouseenter)="changeReplyPreview(id,$event)" class="replies" *ngFor="let id of post.repliedBy">
-                <a  [routerLink]="'.'" [fragment]="'post'+id" [post]="replyPreview"  class="reply"> >>{{id}} </a>
+            <span (mouseenter)="changeReplyPreview(id,$event)" class="replies" *ngFor="let id of post.repliedBy">
+                <a [routerLink]="'.'" [fragment]="'post'+id" [post]="replyPreview" class="reply"> >>{{id}} </a>
             </span>
 
         </div>

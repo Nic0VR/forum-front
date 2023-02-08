@@ -18,8 +18,12 @@
             <span class="error" *ngIf="maxPo.invalid && (maxPo.dirty||maxPo.touched)">Digits only</span>
          </td>
       </tr>
+      <tr>
+         <th><label>Show Images</label></th>
+         <td><input [(ngModel)]="loadFiles" type="checkbox"></td>
+      </tr>
    </table>
-   {{maxPost}} || {{maxThread}} !
+   {{maxPost}} || {{maxThread}} ! showFiles:{{loadFiles}}
    <button (click)="saveUserPref()" [disabled]="!(maxPo.valid && maxThr.valid)" class="button">Save</button>
    <button (click)="resetPref()" class="button">Reset to Default</button>
 </div>

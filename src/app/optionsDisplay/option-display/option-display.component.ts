@@ -14,10 +14,7 @@ export class OptionDisplayComponent implements OnInit {
 
   maxThread?: string;
   maxPost?: string;
-  postFieldEditable: boolean = false;
-  threadFieldEditable: boolean = false;
-  form: FormControl = new FormControl({}, [Validators.pattern(/^[0-9]\d*$/)]);
-
+  loadFiles?:boolean;
   prefSubscription!: Subscription;
 
   ngOnInit(): void {
@@ -40,9 +37,11 @@ export class OptionDisplayComponent implements OnInit {
           userPref = v;
           this.maxThread = userPref.maxThreadFetch?.toString();
           this.maxPost = userPref.maxPostFetch?.toString();
+          this.loadFiles= userPref.displayImages;
         } else {
           this.maxThread = '';
           this.maxPost = '';
+          this.loadFiles=true;
         }
       });
   }
@@ -50,20 +49,14 @@ export class OptionDisplayComponent implements OnInit {
   saveUserPref() {
     let maxP = parseInt(this.maxPost || '');
     let maxT = parseInt(this.maxThread || '');
+    let displFiles = this.loadFiles||false;
     let userPref: Preference = {
-      displayImages: true,
+      displayImages: displFiles,
       maxPostFetch: maxP,
       maxThreadFetch: maxT,
     };
     this.localService.savePreferences(userPref);
     this.close();
-  }
-  togglePostField() {
-    this.postFieldEditable = !this.postFieldEditable;
-  }
-
-  toggleThreadField() {
-    this.threadFieldEditable = !this.threadFieldEditable;
   }
 
   ngOnDestroy() {
