@@ -1,3 +1,5 @@
+/* The PostComponent class is an Angular component that displays a post and its associated files, and
+allows for replying to the post. */
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { FileInfo } from 'src/app/models/file-info';
@@ -64,6 +66,17 @@ export class PostComponent implements OnInit {
     }
   }
 
+  /**
+   * This function creates an image from a Blob object and inserts it into an array at a specified
+   * index.
+   * 
+   * Args:
+   *   image (Blob): The image parameter is a Blob object, which represents a file-like object of
+   * immutable, raw data. It can be an image file in this case.
+   *   index (number): The index parameter is a number that represents the position in an array where
+   * the result of the FileReader will be inserted. In this case, it is used to insert the result of
+   * the FileReader into the files array at a specific index.
+   */
   createImageFromBlob(image: Blob, index: number) {
     let reader = new FileReader();
     reader.addEventListener(
@@ -80,6 +93,13 @@ export class PostComponent implements OnInit {
     }
   }
 
+  /**
+   * The function toggles the size of an image by replacing its ArrayBuffer with a larger or smaller
+   * one.
+   * 
+   * Args:
+   *   img (ArrayBuffer): The `img` parameter is an `ArrayBuffer` representing an image file.
+   */
   toggleImageSize(img: ArrayBuffer) {
     let index = this.files.findIndex((f) => f === img);
 
