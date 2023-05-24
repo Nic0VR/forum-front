@@ -1,0 +1,9 @@
+{
+    "docwriter.style": "Google",
+    "docwriter.progress.trackMethods": false,
+    "docwriter.progress.trackFunctions": false,
+    "docwriter.progress.trackTypes": true,
+    "editor.tabCompletion": "on",
+    "diffEditor.codeLens": true,
+    "MutableAI.upsell": true
+}
